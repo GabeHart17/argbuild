@@ -1,0 +1,35 @@
+Functionality
+-------------
+Structure:
+Tree? Acyclic digraph?
+
+Atomic truth:
+conclusion and premise both are statements
+subconclusion can be treated the same way as a premise
+
+Grouping:
+joint vs. independent support
+a joint support group functions as a single atomic truth value
+
+Validate against:
+Cyclic dependency
+Unused premises
+
+Truth propagation:
+Take certain premises to be true or false
+Show resultant truth value for conclusions and subconclusions
+
+
+Representations
+---------------
+XML:
+Conclusion and joint group tags enclose premises
+Represent tree structure through nesting
+
+JSON or other bracket-y system:
+Alternate way of representing tree structure with nesting
+
+CFG:
+Define premises
+Define "requires" relationships
+Represent tree structure though child node list
