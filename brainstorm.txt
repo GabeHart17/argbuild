@@ -20,7 +20,13 @@ Take certain premises to be true or false
 Show resultant truth value for conclusions and subconclusions
 
 
-Representations
+Representation
+--------------
+Normal form as ASCII
+Tree representation (again using ACII, like TREE command on Windows)
+
+
+Specification
 ---------------
 XML:
 Conclusion and joint group tags enclose premises
