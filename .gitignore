@@ -1,6 +1,5 @@
 # test files and examples
 test/
-*.arg.xml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
