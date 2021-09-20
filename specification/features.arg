@@ -1,10 +1,20 @@
 # comment
+#defining premises
 premise P1: premise statement
 premise P2: premise statement
 premise P3: premise statement
+
+#defining conclusions
 conclusion C1: conclusion statement
 conclusion C2: conclusion statement
 conclusion C3: conclusion statement
+
+#logical relations
+# C1 if P1 or P2
 imply C1: P1 | P2
+
+# C2 if not P3
 imply C2: ~P3
+
+# C3 if C1 xor not (P3 and P2)
 imply C3: C1 ^ ~(P3 & P2)
