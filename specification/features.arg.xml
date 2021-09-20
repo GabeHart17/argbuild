@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<argument>
+  <import id="id_for_imported_conclusion" path="path/to/subconclusion1.arg.xml"/>
+  <conclusion>concluding statement</conclusion>
+  <premise id="premise1_id">a premise</premise>
+  <join id="joint_premise_id">
+    <premise id="premise2_id">a premise in a joint premise group</premise>
+    <subconclusion id="id_for_imported_conclusion"/>
+  </join>
+</argument>

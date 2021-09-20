@@ -1,0 +1,10 @@
+# comment
+premise P1: premise statement
+premise P2: premise statement
+premise P3: premise statement
+conclusion C1: conclusion statement
+conclusion C2: conclusion statement
+conclusion C3: conclusion statement
+imply C1: P1 | P2
+imply C2: ~P3
+imply C3: C1 ^ ~(P3 & P2)

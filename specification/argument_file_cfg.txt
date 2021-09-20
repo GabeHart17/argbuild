@@ -1,0 +1,13 @@
+FILE := COMMENT FILE | LINE FILE | epsilon
+COMMENT := '#' text
+LINE := PREMISE | CONCLUSION | IMPLY
+PREMISE := 'premise' PREMISE_LABEL ':' text
+CONCLUSION := 'conclusion' CONCLUSION_LABEL ':' text
+PREMISE_LABEL := text_no_spaces
+CONCLUSION_LABEL := text_no_spaces
+IMPLY := 'imply' CONCLUSION_LABEL ':' EXPRESSION
+EXPRESSION := E0
+E0 := E1 '|' E0 | E1
+E1 := E2 '&' E1 | E2
+E2 := '~' E3 | E3
+E3 := '(' E0 ')' | PREMISE_LABEL | CONCLUSION_LABEL

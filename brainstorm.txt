@@ -15,7 +15,7 @@ Validate against:
 Cyclic dependency
 Unused premises
 
-Truth propagation:
+Validity assessment:
 Take certain premises to be true or false
 Show resultant truth value for conclusions and subconclusions
 
