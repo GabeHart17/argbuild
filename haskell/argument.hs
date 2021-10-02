@@ -12,11 +12,18 @@ import Data.String
 import Data.Char
 
 data LineType = Error | Premise | Conclusion | Imply deriving (Show, Eq)
-data ExprType = Not | And | Xor | Or | Ident | LParen | RParen deriving (Show, Eq)
+data ExprType = Err | Not | And | Xor | Or | Ident | LParen | RParen deriving (Show, Eq)
+data Terminal = Terminal String deriving (Show, Eq)
 data ExprNode = ExprNode {
-  children :: [ExprNode],
+  children :: [Either ExprNode Terminal],
   operator :: [Bool] -> Bool
-} deriving (Show)
+}
+
+type Token = (ExprType,String)
+type TokenList = [(ExprType,String)]
+type ExprTreePair = (ExprNode,TokenList)
+type Production = [Either ExprType (TokenList -> ExprTreePair)]
+
 
 split :: (Eq a) => a -> [a] -> ([a], [a])
 split c s = let (a,b) = break (==c) s in (a, tail b)
@@ -44,12 +51,21 @@ getType sr
   where
     s = strip sr
 
-nextToken :: String -> (ExprType,String)
+nextToken :: String -> Token
 nextToken s@(h:_) = (t, if t /= Ident then [h] else takeWhile (\c -> getType [c] == Ident) (head $ words s)) where t = getType [h]
 
-lexExpr :: String -> [(ExprType,String)]
+lexExpr :: String -> TokenList
 lexExpr [] = []
 lexExpr s@(x:_) = if isSpace x then lexExpr (tail s) else
   let t = nextToken s in [t] ++ lexExpr (drop (length $ snd t) s)
 
-buildExprTree :: [(ExprType,String)] -> (String -> Bool) -> ExprNode
+consumeToken :: ExprType -> TokenList -> Maybe Token
+consumeToken t [] = Nothing
+consumeToken t l@(n:_) = if fst n == t then Just n else Nothing
+
+e0 :: TokenList -> ExprNode
+e0 tl = e0 $ consumeToken Or $ e1 tl
+
+-- doProduction :: ([Bool] -> Bool) -> Production -> TokenList -> ExprTreePair
+-- doProduction operator production tlist = (ExprNode operands operator, remainder)
+--   where remainder = foldl (acc, prod -> )

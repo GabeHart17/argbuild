@@ -1,0 +1,15 @@
+lexer
+inputs: text
+outputs: token list
+
+parser
+inputs: token list, productions
+outputs: parse tree
+
+evaluator
+inputs: parse tree, value table
+outputs: truth value of tree evaluation
+
+value table
+inputs: identifier
+outputs: truth value of that identifier
