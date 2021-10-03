@@ -39,7 +39,7 @@ public:
   operator bool() { return is_null() || is_err(); }
 };
 
-class Parser {
+class ExprParser {
 private:
   std::vector<Token>::iterator next_;
   const std::vector<Token>& tokens_;
@@ -129,11 +129,11 @@ private:
   }
 
 public:
-  Parser(std::string name, std::vector<Token>& tokens) :
+  ExprParser(std::string name, std::vector<Token>& tokens) :
     name_(name), next_(tokens.begin()), tokens_(tokens) {
       tree_ = E0();
     }
-  virtual ~Parser() {}
+  virtual ~ExprParser() {}
 };
 
 
